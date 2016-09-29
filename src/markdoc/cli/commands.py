@@ -235,7 +235,11 @@ def sync_html(config, args):
     
     log.debug(subprocess.list2cmdline(display_cmd))
     
-    subprocess.check_call(command)
+    try:
+        subprocess.check_call(command)
+    except:
+        print "Failed running the command: "+command
+        raise
     
     log.debug('rsync completed')
 
